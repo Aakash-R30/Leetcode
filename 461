@@ -1,0 +1,19 @@
+461. Hamming Distance
+
+
+
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int cnt = x^y;
+        int c;
+
+        while(cnt){
+           c = c + (cnt&1);
+                
+            cnt = cnt>>1;
+            
+        }
+        return c;
+    }
+};
