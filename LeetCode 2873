@@ -1,0 +1,38 @@
+class Solution {
+public:
+    long long maximumTripletValue(vector<int>& nums) {
+        int n = nums.size();
+        int larr[100];
+           larr[0] = -1;
+            int vbig = nums[0];
+        for(int i = 1 ; i<n; i++){
+           larr[i] = vbig;
+            if(nums[i] > vbig){
+               vbig =nums[i];
+            }
+        }
+        
+
+        int rarr[100];
+        rarr[n -1] = -1;
+          int big = nums[n-1];
+        for(int i = n-2; i>=0; i--){
+           rarr[i] = big;
+            if(nums[i] >big){
+                big =nums[i];
+            }
+        }
+
+
+        long long maxval = 0;
+        for(int j = 1; j< n-1 ; j++){
+            if(larr[j] > nums[j]  && rarr[j]>0){
+                long long val =(long long) (larr[j] - nums[j]) * (rarr[j]);
+                if (val>maxval){
+                    maxval = val;
+                }
+            }
+        }
+        return maxval;
+    }
+};
