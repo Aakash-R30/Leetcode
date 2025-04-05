@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        return solve (nums, 0, 0);
+    
+    }
+
+
+
+        int solve(vector<int>& nums, int i , int xxor){
+            if (i == nums.size()){
+                return xxor;
+            }
+            int in = solve(nums, i+1, nums[i]^xxor);
+            int ex = solve(nums, i+1, xxor);
+            return in + ex;
+
+        }
+        
+    
+};
